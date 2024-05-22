@@ -3,8 +3,10 @@ import grpc
 
 from flask import Flask, render_template, request, jsonify
 
-from gRPC_files.transcription_pb2 import TranscriptionRequest
-from gRPC_files.transcription_pb2_grpc import TranscribeStub
+from gRPC_files.transcription.transcription_pb2 import TranscriptionRequest
+from gRPC_files.transcription.transcription_pb2_grpc import TranscribeStub
+from gRPC_files.translation.translation_pb2 import TranslationRequest
+from gRPC_files.translation.translation_pb2_grpc import TranslateStub
 
 app = Flask(__name__,
             template_folder="src/app/web/templates",)
@@ -19,6 +21,9 @@ transcription_service_host = os.getenv(
 transcription_channel = grpc.insecure_channel(
     f"localhost:50051")
 transcription_client = TranscribeStub(transcription_channel)
+
+translatation_channel = grpc.insecure_channel("localhost:50052")
+translation_client = TranslateStub(translatation_channel)
 
 
 @app.route("/")
@@ -51,6 +56,38 @@ def transcribe():
         return jsonify({
             "transcription": response.text,
         }, 200)
+
+
+@app.route("/api/v1/translate", methods=["POST"])
+def translate():
+    if 'text' not in request.form:
+        return jsonify({"error": "No text in the request"}, 400)
+
+    text = request.form["text"]
+
+    if text == "":
+        return jsonify({"error": "No text in the request"}, 400)
+
+    if 'from_language' not in request.form:
+        return jsonify({"error": "No from_language in the request"}, 400)
+
+    if 'to_language' not in request.form:
+        return jsonify({"error": "No to_language in the request"}, 400)
+
+    from_language = request.form["from_language"]
+    to_language = request.form["to_language"]
+
+    translation_request = TranslationRequest(
+        input=text,
+        from_language=from_language,
+        to_language=to_language
+    )
+    response = translation_client.Translate(translation_request)
+
+    return jsonify({
+        "translation": response.text,
+    }, 200)
+
 
 
 if __name__ == "__main__":

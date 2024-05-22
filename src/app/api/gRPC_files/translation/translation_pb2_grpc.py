@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import gRPC_files.transcription_pb2 as transcription__pb2
+import gRPC_files.translation.translation_pb2 as translation__pb2
 
 GRPC_GENERATED_VERSION = '1.63.0'
 GRPC_VERSION = grpc.__version__
@@ -21,7 +21,7 @@ except ImportError:
 if _version_not_supported:
     warnings.warn(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in transcription_pb2_grpc.py depends on'
+        + f' but the generated code in translation_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -31,7 +31,7 @@ if _version_not_supported:
     )
 
 
-class TranscribeStub(object):
+class TranslateStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -40,58 +40,58 @@ class TranscribeStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Transcribe = channel.unary_unary(
-            '/transcription.Transcribe/Transcribe',
-            request_serializer=transcription__pb2.TranscriptionRequest.SerializeToString,
-            response_deserializer=transcription__pb2.TranscriptionResponse.FromString,
+        self.Translate = channel.unary_unary(
+            '/translation.Translate/Translate',
+            request_serializer=translation__pb2.TranslationRequest.SerializeToString,
+            response_deserializer=translation__pb2.TranslationResponse.FromString,
             _registered_method=True)
 
 
-class TranscribeServicer(object):
+class TranslateServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def Transcribe(self, request, context):
+    def Translate(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_TranscribeServicer_to_server(servicer, server):
+def add_TranslateServicer_to_server(servicer, server):
     rpc_method_handlers = {
-        'Transcribe': grpc.unary_unary_rpc_method_handler(
-            servicer.Transcribe,
-            request_deserializer=transcription__pb2.TranscriptionRequest.FromString,
-            response_serializer=transcription__pb2.TranscriptionResponse.SerializeToString,
+        'Translate': grpc.unary_unary_rpc_method_handler(
+            servicer.Translate,
+            request_deserializer=translation__pb2.TranslationRequest.FromString,
+            response_serializer=translation__pb2.TranslationResponse.SerializeToString,
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-        'transcription.Transcribe', rpc_method_handlers)
+        'translation.Translate', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
  # This class is part of an EXPERIMENTAL API.
 
 
-class Transcribe(object):
+class Translate(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def Transcribe(request,
-                   target,
-                   options=(),
-                   channel_credentials=None,
-                   call_credentials=None,
-                   insecure=False,
-                   compression=None,
-                   wait_for_ready=None,
-                   timeout=None,
-                   metadata=None):
+    def Translate(request,
+                  target,
+                  options=(),
+                  channel_credentials=None,
+                  call_credentials=None,
+                  insecure=False,
+                  compression=None,
+                  wait_for_ready=None,
+                  timeout=None,
+                  metadata=None):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/transcription.Transcribe/Transcribe',
-            transcription__pb2.TranscriptionRequest.SerializeToString,
-            transcription__pb2.TranscriptionResponse.FromString,
+            '/translation.Translate/Translate',
+            translation__pb2.TranslationRequest.SerializeToString,
+            translation__pb2.TranslationResponse.FromString,
             options,
             channel_credentials,
             insecure,

@@ -4,7 +4,7 @@ from concurrent import futures
 
 import transcription_pb2 as transcription_pb2
 import transcription_pb2_grpc as transcription_pb2_grpc
-from transcription import transcribe_audio
+from transcription import transcribe_audio, clean_up_when_close
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -30,6 +30,7 @@ def serve():
         server.wait_for_termination()
     except KeyboardInterrupt:
         logger.info("Server stopped")
+        clean_up_when_close()
         server.stop(0)
 
 
