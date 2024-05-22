@@ -2,8 +2,8 @@ import grpc
 import logging
 from concurrent import futures
 
-import transcription_pb2 as transcription_pb2
-import transcription_pb2_grpc as transcription_pb2_grpc
+import gRPC.transcription_pb2 as transcription_pb2
+import gRPC.transcription_pb2_grpc as transcription_pb2_grpc
 from transcription import transcribe_audio, clean_up_when_close
 
 logging.basicConfig(level=logging.INFO)
