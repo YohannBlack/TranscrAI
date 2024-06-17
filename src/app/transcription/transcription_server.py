@@ -15,11 +15,17 @@ class SpeechRecognitionServer(transcription_pb2_grpc.TranscribeServicer):
         logger.info("Transcription request received")
         audio = request.audio
         transcription = transcribe_audio(audio)
+        logger.info("Transcription completed")
         return transcription_pb2.TranscriptionResponse(text=transcription)
 
 
 def serve():
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    server = grpc.server(
+        futures.ThreadPoolExecutor(max_workers=10),
+        options=[
+            ('grpc.max_receive_message_length', 50 * 1024 * 1024)  # 50MB
+        ]
+    )
     transcription_pb2_grpc.add_TranscribeServicer_to_server(
         SpeechRecognitionServer(), server)
     server.add_insecure_port('[::]:50051')

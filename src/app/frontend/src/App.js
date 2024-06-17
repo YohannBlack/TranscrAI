@@ -25,7 +25,7 @@ function App() {
       }
 
       const data = await response.json();
-      setTranscription(data.transcription);
+      setTranscription(data[0].transcription);
       setError(null); // Réinitialisez l'état d'erreur en cas de succès
     } catch (error) {
       setError(error.message);

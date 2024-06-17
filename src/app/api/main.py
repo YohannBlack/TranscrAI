@@ -2,7 +2,9 @@ import os
 import grpc
 
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 
+from tools.helper_functions import check_audio_format
 from gRPC_files.transcription.transcription_pb2 import TranscriptionRequest
 from gRPC_files.transcription.transcription_pb2_grpc import TranscribeStub
 from gRPC_files.translation.translation_pb2 import TranslationRequest
@@ -10,16 +12,16 @@ from gRPC_files.translation.translation_pb2_grpc import TranslateStub
 
 app = Flask(__name__,
             template_folder="src/app/web/templates",)
+CORS(app)
 
 download_folder = "src/data"
 app.config["DOWNLOAD_FOLDER"] = download_folder
 
 os.makedirs(download_folder, exist_ok=True)
 
-transcription_service_host = os.getenv(
-    "TRANSCRIPTION_SERVICE_HOST", "localhost")
-transcription_channel = grpc.insecure_channel(
-    f"localhost:50051")
+transcription_service_host = os.getenv("TRANSCRIPTION_SERVICE_HOST",
+                                       "localhost")
+transcription_channel = grpc.insecure_channel("localhost:50051")
 transcription_client = TranscribeStub(transcription_channel)
 
 translatation_channel = grpc.insecure_channel("localhost:50052")
@@ -40,6 +42,9 @@ def transcribe():
 
     if audio_file.filename == "":
         return jsonify({"error": "No file selected for uploading"}, 400)
+
+    if not check_audio_format(audio_file.filename):
+        return jsonify({"error": "Invalid file format"}, 400)
 
     if audio_file:
         filename = audio_file.filename

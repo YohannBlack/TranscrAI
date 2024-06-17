@@ -4,6 +4,7 @@ package transcription;
 
 service Transcribe {
     rpc Transcribe (TranscriptionRequest) returns (TranscriptionResponse);
+    rpc TranscribeStreaming (stream TranscriptionRequest) returns (stream TranscriptionResponse)
 }
 
 message TranscriptionRequest {
