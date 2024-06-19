@@ -45,6 +45,11 @@ class TranscribeStub(object):
             request_serializer=transcription__pb2.TranscriptionRequest.SerializeToString,
             response_deserializer=transcription__pb2.TranscriptionResponse.FromString,
             _registered_method=True)
+        self.TranscribeStreaming = channel.stream_stream(
+            '/transcription.Transcribe/TranscribeStreaming',
+            request_serializer=transcription__pb2.TranscriptionRequest.SerializeToString,
+            response_deserializer=transcription__pb2.TranscriptionResponse.FromString,
+            _registered_method=True)
 
 
 class TranscribeServicer(object):
@@ -56,11 +61,22 @@ class TranscribeServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def TranscribeStreaming(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_TranscribeServicer_to_server(servicer, server):
     rpc_method_handlers = {
         'Transcribe': grpc.unary_unary_rpc_method_handler(
             servicer.Transcribe,
+            request_deserializer=transcription__pb2.TranscriptionRequest.FromString,
+            response_serializer=transcription__pb2.TranscriptionResponse.SerializeToString,
+        ),
+        'TranscribeStreaming': grpc.stream_stream_rpc_method_handler(
+            servicer.TranscribeStreaming,
             request_deserializer=transcription__pb2.TranscriptionRequest.FromString,
             response_serializer=transcription__pb2.TranscriptionResponse.SerializeToString,
         ),
@@ -90,6 +106,33 @@ class Transcribe(object):
             request,
             target,
             '/transcription.Transcribe/Transcribe',
+            transcription__pb2.TranscriptionRequest.SerializeToString,
+            transcription__pb2.TranscriptionResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def TranscribeStreaming(request_iterator,
+                            target,
+                            options=(),
+                            channel_credentials=None,
+                            call_credentials=None,
+                            insecure=False,
+                            compression=None,
+                            wait_for_ready=None,
+                            timeout=None,
+                            metadata=None):
+        return grpc.experimental.stream_stream(
+            request_iterator,
+            target,
+            '/transcription.Transcribe/TranscribeStreaming',
             transcription__pb2.TranscriptionRequest.SerializeToString,
             transcription__pb2.TranscriptionResponse.FromString,
             options,

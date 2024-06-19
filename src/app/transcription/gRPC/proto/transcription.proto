@@ -4,11 +4,13 @@ package transcription;
 
 service Transcribe {
     rpc Transcribe (TranscriptionRequest) returns (TranscriptionResponse);
-    rpc TranscribeStreaming (stream TranscriptionRequest) returns (stream TranscriptionResponse)
+    rpc TranscribeStreaming (stream TranscriptionRequest) returns (stream TranscriptionResponse);
 }
 
 message TranscriptionRequest {
     bytes audio = 1;
+    bool isLongAudio = 2;
+    string language = 3;
 }
 
 message TranscriptionResponse {
