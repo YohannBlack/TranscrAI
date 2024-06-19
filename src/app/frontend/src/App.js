@@ -9,7 +9,16 @@ const TranslatePage = () => {
   const [translationResult, setTranslationResult] = useState("");
   const [error, setError] = useState(null);
 
-  const handleTranslate = async () => {
+  const handleFileChange = (e) => {
+    setAudioFile(e.target.files[0]);
+  };
+
+  const handleUpload = async () => {
+    const formData = new FormData();
+    formData.append("audioFile", audioFile);
+    formData.append("language", "english");
+    formData.append("isLongAudio", "True");
+
     try {
       const response = await fetch("http://127.0.0.1:5000/api/v1/translate", {
         method: "POST",
@@ -27,9 +36,20 @@ const TranslatePage = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const data = await response.json();
-      setTranslationResult(data.translation);
-      setError(null); // Reset error state on success
+      const reader = response.body.getReader();
+      let output = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+
+        if (done) {
+          break;
+        }
+
+        output += new TextDecoder("utf-8").decode(value);
+        setTranscription((prevTranscription) => prevTranscription + output);
+      }
+      setError(null); // Réinitialisez l'état d'erreur en cas de succès
     } catch (error) {
       setError(error.message);
       console.error("Error translating text:", error);
