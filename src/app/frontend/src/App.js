@@ -13,6 +13,8 @@ function App() {
   const handleUpload = async () => {
     const formData = new FormData();
     formData.append("audioFile", audioFile);
+    formData.append("language", "english");
+    formData.append("isLongAudio", "True");
 
     try {
       const response = await fetch("http://127.0.0.1:5000/api/v1/transcribe", {
@@ -24,8 +26,19 @@ function App() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const data = await response.json();
-      setTranscription(data[0].transcription);
+      const reader = response.body.getReader();
+      let output = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+
+        if (done) {
+          break;
+        }
+
+        output += new TextDecoder("utf-8").decode(value);
+        setTranscription((prevTranscription) => prevTranscription + output);
+      }
       setError(null); // Réinitialisez l'état d'erreur en cas de succès
     } catch (error) {
       setError(error.message);
