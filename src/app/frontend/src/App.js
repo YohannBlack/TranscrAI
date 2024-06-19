@@ -36,7 +36,11 @@ function App() {
           break;
         }
 
-        output += new TextDecoder("utf-8").decode(value);
+        const transcriptionText = new TextDecoder("utf-8")
+          .decode(value)
+          .replace("transcription:", "");
+        output += transcriptionText;
+      
         setTranscription((prevTranscription) => prevTranscription + output);
       }
       setError(null); // Réinitialisez l'état d'erreur en cas de succès

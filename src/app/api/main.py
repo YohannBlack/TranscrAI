@@ -50,7 +50,7 @@ def transcribe():
 
     is_long_audio = request.form['isLongAudio']
 
-    if is_long_audio == "true":
+    if is_long_audio in ["true", "True", "1", 1, True, "yes", "Yes", "y", "Y"]:
         is_long_audio = True
     else:
         is_long_audio = False
