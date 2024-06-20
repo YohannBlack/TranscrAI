@@ -10,25 +10,26 @@ const TranslatePage = () => {
   const [error, setError] = useState(null);
 
   const handleTranslate = async () => {
+    const formData = new FormData();
+    formData.append("text", textToTranslate);
+    formData.append("from_language", fromLanguage);
+    formData.append("to_language", toLanguage);
+
     try {
       const response = await fetch("http://127.0.0.1:5000/api/v1/translate", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          text: textToTranslate,
-          from_language: fromLanguage,
-          to_language: toLanguage,
-        }),
+        body: formData,
       });
+
+      console.log(formData);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
       const data = await response.json();
-      setTranslationResult(data.translation);
+      console.log(data);
+      setTranslationResult(data[0].translation);
       setError(null); // Reset error state on success
     } catch (error) {
       setError(error.message);
@@ -45,15 +46,15 @@ const TranslatePage = () => {
           id="textToTranslate"
           rows="4"
           value={textToTranslate}
-          onChange={(e) => setTextToTranslate(e.target.value)}
-        ></textarea>
+          onChange={(e) => setTextToTranslate(e.target.value)}></textarea>
 
         <label htmlFor="fromLanguage">De la langue:</label>
         <select
           id="fromLanguage"
           value={fromLanguage}
-          onChange={(e) => setFromLanguage(e.target.value)}
-        >
+          onChange={(e) => {
+            setFromLanguage(e.target.value);
+          }}>
           <option value="en">Anglais</option>
           <option value="fr">Français</option>
           {/* Ajoutez d'autres options de langue selon vos besoins */}
@@ -63,8 +64,7 @@ const TranslatePage = () => {
         <select
           id="toLanguage"
           value={toLanguage}
-          onChange={(e) => setToLanguage(e.target.value)}
-        >
+          onChange={(e) => setToLanguage(e.target.value)}>
           <option value="fr">Français</option>
           <option value="en">Anglais</option>
           {/* Ajoutez d'autres options de langue selon vos besoins */}
