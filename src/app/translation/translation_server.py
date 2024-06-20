@@ -16,7 +16,10 @@ class TranslationServer(translation_pb2_grpc.TranslateServicer):
         text = request.input
         from_language = request.from_language
         to_language = request.to_language
-        translation = translate_text(text, from_language, to_language)
+        translation = translate_text(input_text=text,
+                                     from_language=from_language,
+                                     to_language=to_language)
+        logger.info(f"Translation: {translation}")
         return translation_pb2.TranslationResponse(text=translation)
 
 
