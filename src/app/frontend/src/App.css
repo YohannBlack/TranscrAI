@@ -1,9 +1,13 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a08a73f (translate front)
   /* Styles for Translation Page */
   
   .translate-page {
     padding: 20px;
     text-align: center;
+<<<<<<< HEAD
   }
   
   .translate-form {
@@ -38,6 +42,17 @@
   from {
     transform: rotate(0deg);
 >>>>>>> a1eda53 (conflict)
+=======
+  }
+  
+  .translate-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+>>>>>>> a08a73f (translate front)
   }
   
   .translate-form label {
@@ -46,6 +61,9 @@
     font-weight: bold;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a08a73f (translate front)
   
   .translate-form textarea,
   .translate-form select {
@@ -86,6 +104,7 @@
     margin-top: 20px;
     font-weight: bold;
   }
+<<<<<<< HEAD
   
 =======
 }
@@ -116,3 +135,6 @@
   transform: scale(1.05);
 }
 >>>>>>> a1eda53 (conflict)
+=======
+  
+>>>>>>> a08a73f (translate front)
