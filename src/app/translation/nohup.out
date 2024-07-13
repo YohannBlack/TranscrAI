@@ -3,3 +3,146 @@ INFO:__main__:Server starting on port 50052
 INFO:__main__:Server starting on port 50052
 INFO:__main__:Server starting on port 50052
 INFO:__main__:Server starting on port 50052
+/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/salim/PA/TranscrAI/src/app/translation/translation_server.py", line 7, in <module>
+    from translation import translate_text, clean_up_when_close
+  File "/home/salim/PA/TranscrAI/src/app/translation/translation.py", line 16, in <module>
+    tokenizer = M2M100Tokenizer.from_pretrained("facebook/m2m100_418M")
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 1450, in __getattribute__
+    requires_backends(cls, cls._backends)
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 1438, in requires_backends
+    raise ImportError("".join(failed))
+ImportError: 
+M2M100Tokenizer requires the SentencePiece library but it was not found in your environment. Checkout the instructions on the
+installation page of its repo: https://github.com/google/sentencepiece#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+
+/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/salim/PA/TranscrAI/src/app/translation/translation_server.py", line 7, in <module>
+    from translation import translate_text, clean_up_when_close
+  File "/home/salim/PA/TranscrAI/src/app/translation/translation.py", line 16, in <module>
+    tokenizer = M2M100Tokenizer.from_pretrained("facebook/m2m100_418M")
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 1450, in __getattribute__
+    requires_backends(cls, cls._backends)
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 1438, in requires_backends
+    raise ImportError("".join(failed))
+ImportError: 
+M2M100Tokenizer requires the SentencePiece library but it was not found in your environment. Checkout the instructions on the
+installation page of its repo: https://github.com/google/sentencepiece#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+
+/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/salim/PA/TranscrAI/src/app/translation/translation_server.py", line 7, in <module>
+    from translation import translate_text, clean_up_when_close
+  File "/home/salim/PA/TranscrAI/src/app/translation/translation.py", line 16, in <module>
+    tokenizer = M2M100Tokenizer.from_pretrained("facebook/m2m100_418M")
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 1450, in __getattribute__
+    requires_backends(cls, cls._backends)
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 1438, in requires_backends
+    raise ImportError("".join(failed))
+ImportError: 
+M2M100Tokenizer requires the SentencePiece library but it was not found in your environment. Checkout the instructions on the
+installation page of its repo: https://github.com/google/sentencepiece#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+
+/home/salim/PA/env/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+INFO:__main__:Server starting on port 50052
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour, comment vous êtes-vous?
+INFO:__main__:Translation request received
+INFO:__main__:Translation request received
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour, comment vous êtes-vous?
+INFO:__main__:Translation: Bonjour, comment vous êtes-vous?
+INFO:__main__:Translation: Bonjour, comment vous êtes-vous?
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Hello, how are you going?
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonsoir
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Good Morning
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Good Morning
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Hello to
+INFO:__main__:Translation request received
+INFO:__main__:Translation: I live in Paris
+INFO:__main__:Translation request received
+INFO:__main__:Translation: I live in Paris
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour, je vis un Paris et toi?
+INFO:__main__:Translation request received
+INFO:__main__:Translation: I live in Paris and you.
+INFO:__main__:Translation request received
+INFO:__main__:Translation: I live in Paris and you.
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Hello to
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Hello to
+INFO:__main__:Translation request received
+INFO:__main__:Translation request received
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Hello to
+INFO:__main__:Translation request received
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Hello to
+INFO:__main__:Translation: Hello to
+INFO:__main__:Translation: Hello to
+INFO:__main__:Translation: Hello to
+INFO:__main__:Translation request received
+INFO:__main__:Translation: je vie à Paris
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour, comment vous êtes-vous?
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour
+INFO:__main__:Translation request received
+INFO:__main__:Translation request received
+INFO:__main__:Translation request received
+INFO:__main__:Translation request received
+INFO:__main__:Translation request received
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour
+INFO:__main__:Translation: Bonjour
+INFO:__main__:Translation: Bonjour
+INFO:__main__:Translation: Bonjour
+INFO:__main__:Translation: Bonjour
+INFO:__main__:Translation: Bonjour
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour, je vis à Paris,
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour, je vis à Paris,
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Welcome to
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Bonjour, comment est-ce que tu vas?
+INFO:__main__:Translation request received
+INFO:__main__:Translation: How are you going?
+INFO:__main__:Translation request received
+INFO:__main__:Translation: Hello, is it going?

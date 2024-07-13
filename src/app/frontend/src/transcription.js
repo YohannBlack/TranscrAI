@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './styles/transcription.css';
 
 function App() {
   const [audioFile, setAudioFile] = useState(null);

@@ -24,3 +24,265 @@ INFO:__main__:Transcription request received
 INFO:__main__:Transcription request received
 INFO:__main__:Transcription request received
 INFO:__main__:Transcription request received
+/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+/home/salim/PA/TranscrAI/env/bin/python: Error while finding module specification for 'transcription_server.py' (ModuleNotFoundError: __path__ attribute not found on 'transcription_server' while trying to find 'transcription_server.py'). Try using 'transcription_server' instead of 'transcription_server.py' as the module name.
+/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+INFO:__main__:Server starting on port 50051
+/home/salim/PA/env/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/salim/PA/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+  File "/home/salim/PA/env/lib/python3.10/site-packages/urllib3/connection.py", line 466, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.10/http/client.py", line 1375, in getresponse
+    response.begin()
+  File "/usr/lib/python3.10/http/client.py", line 318, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.10/http/client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/lib/python3.10/ssl.py", line 1307, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.10/ssl.py", line 1163, in read
+    return self._sslobj.read(len, buffer)
+TimeoutError: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/salim/PA/env/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/salim/PA/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+  File "/home/salim/PA/env/lib/python3.10/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+  File "/home/salim/PA/env/lib/python3.10/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/salim/PA/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+  File "/home/salim/PA/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/home/salim/PA/env/lib/python3.10/site-packages/urllib3/connectionpool.py", line 370, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/salim/PA/TranscrAI/src/app/transcription/transcription_server.py", line 7, in <module>
+    from transcription import transcribe_audio, clean_up_when_close
+  File "/home/salim/PA/TranscrAI/src/app/transcription/transcription.py", line 10, in <module>
+    pipe = pipeline("automatic-speech-recognition",
+  File "/home/salim/PA/env/lib/python3.10/site-packages/transformers/pipelines/__init__.py", line 1005, in pipeline
+    tokenizer = AutoTokenizer.from_pretrained(
+  File "/home/salim/PA/env/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 862, in from_pretrained
+    return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+  File "/home/salim/PA/env/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 2047, in from_pretrained
+    resolved_vocab_files[file_id] = cached_file(
+  File "/home/salim/PA/env/lib/python3.10/site-packages/transformers/utils/hub.py", line 398, in cached_file
+    resolved_file = hf_hub_download(
+  File "/home/salim/PA/env/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/salim/PA/env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1221, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+  File "/home/salim/PA/env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1367, in _hf_hub_download_to_cache_dir
+    _download_to_tmp_and_move(
+  File "/home/salim/PA/env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1884, in _download_to_tmp_and_move
+    http_get(
+  File "/home/salim/PA/env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 459, in http_get
+    r = _request_wrapper(
+  File "/home/salim/PA/env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 395, in _request_wrapper
+    response = get_session().request(method=method, url=url, **params)
+  File "/home/salim/PA/env/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/salim/PA/env/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/salim/PA/env/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 66, in send
+    return super().send(request, *args, **kwargs)
+  File "/home/salim/PA/env/lib/python3.10/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: (ReadTimeoutError("HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: 8ac6fcbe-fe0b-4002-8ae8-a55d117037c0)')
+INFO:__main__:Transcription request received
+ERROR:grpc._server:Exception calling application: ffmpeg was not found but is required to load audio files from filename
+Traceback (most recent call last):
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/audio_utils.py", line 34, in ffmpeg_read
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/grpc/_server.py", line 555, in _call_behavior
+  File "/home/salim/PA/TranscrAI/src/app/transcription/transcription_server.py", line 17, in Transcribe
+    transcription = transcribe_audio(audio)
+  File "/home/salim/PA/TranscrAI/src/app/transcription/transcription.py", line 36, in transcribe_audio
+    return pipe(
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 285, in __call__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1234, in __call__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 124, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 269, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 675, in _next_data
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 32, in fetch
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 186, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 362, in preprocess
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/audio_utils.py", line 37, in ffmpeg_read
+ValueError: ffmpeg was not found but is required to load audio files from filename
+INFO:__main__:Transcription request received
+ERROR:grpc._server:Exception calling application: ffmpeg was not found but is required to load audio files from filename
+Traceback (most recent call last):
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/audio_utils.py", line 34, in ffmpeg_read
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/grpc/_server.py", line 555, in _call_behavior
+  File "/home/salim/PA/TranscrAI/src/app/transcription/transcription_server.py", line 17, in Transcribe
+    transcription = transcribe_audio(audio)
+  File "/home/salim/PA/TranscrAI/src/app/transcription/transcription.py", line 36, in transcribe_audio
+    return pipe(
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 285, in __call__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1234, in __call__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 124, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 269, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 675, in _next_data
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 32, in fetch
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 186, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 362, in preprocess
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/audio_utils.py", line 37, in ffmpeg_read
+ValueError: ffmpeg was not found but is required to load audio files from filename
+INFO:__main__:Transcription request received
+ERROR:grpc._server:Exception calling application: ffmpeg was not found but is required to load audio files from filename
+Traceback (most recent call last):
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/audio_utils.py", line 34, in ffmpeg_read
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/grpc/_server.py", line 555, in _call_behavior
+  File "/home/salim/PA/TranscrAI/src/app/transcription/transcription_server.py", line 17, in Transcribe
+    transcription = transcribe_audio(audio)
+  File "/home/salim/PA/TranscrAI/src/app/transcription/transcription.py", line 36, in transcribe_audio
+    return pipe(
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 285, in __call__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1234, in __call__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 124, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 269, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 675, in _next_data
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 32, in fetch
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 186, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 362, in preprocess
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/audio_utils.py", line 37, in ffmpeg_read
+ValueError: ffmpeg was not found but is required to load audio files from filename
+INFO:__main__:Transcription request received
+ERROR:grpc._server:Exception calling application: ffmpeg was not found but is required to load audio files from filename
+Traceback (most recent call last):
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/audio_utils.py", line 34, in ffmpeg_read
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/grpc/_server.py", line 555, in _call_behavior
+  File "/home/salim/PA/TranscrAI/src/app/transcription/transcription_server.py", line 17, in Transcribe
+    transcription = transcribe_audio(audio)
+  File "/home/salim/PA/TranscrAI/src/app/transcription/transcription.py", line 36, in transcribe_audio
+    return pipe(
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 285, in __call__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1234, in __call__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 124, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 269, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 675, in _next_data
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 32, in fetch
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 186, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 362, in preprocess
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/audio_utils.py", line 37, in ffmpeg_read
+ValueError: ffmpeg was not found but is required to load audio files from filename
+INFO:__main__:Transcription request received
+ERROR:grpc._server:Exception calling application: ffmpeg was not found but is required to load audio files from filename
+Traceback (most recent call last):
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/audio_utils.py", line 34, in ffmpeg_read
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/grpc/_server.py", line 555, in _call_behavior
+  File "/home/salim/PA/TranscrAI/src/app/transcription/transcription_server.py", line 17, in Transcribe
+    transcription = transcribe_audio(audio)
+  File "/home/salim/PA/TranscrAI/src/app/transcription/transcription.py", line 36, in transcribe_audio
+    return pipe(
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 285, in __call__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1234, in __call__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 124, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 269, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 675, in _next_data
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 32, in fetch
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 186, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 362, in preprocess
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/audio_utils.py", line 37, in ffmpeg_read
+ValueError: ffmpeg was not found but is required to load audio files from filename
+INFO:__main__:Transcription request received
+ERROR:grpc._server:Exception calling application: ffmpeg was not found but is required to load audio files from filename
+Traceback (most recent call last):
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/audio_utils.py", line 34, in ffmpeg_read
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/grpc/_server.py", line 555, in _call_behavior
+  File "/home/salim/PA/TranscrAI/src/app/transcription/transcription_server.py", line 17, in Transcribe
+    transcription = transcribe_audio(audio)
+  File "/home/salim/PA/TranscrAI/src/app/transcription/transcription.py", line 36, in transcribe_audio
+    return pipe(
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 285, in __call__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1234, in __call__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 124, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 269, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 675, in _next_data
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 32, in fetch
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/pt_utils.py", line 186, in __next__
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 362, in preprocess
+  File "/home/salim/PA/TranscrAI/env/lib/python3.10/site-packages/transformers/pipelines/audio_utils.py", line 37, in ffmpeg_read
+ValueError: ffmpeg was not found but is required to load audio files from filename

@@ -1,93 +1,50 @@
-// TranslatePage.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Translation from './translate';
+import Transcription from './transcription';
+import './styles/App.css'; // Assurez-vous que ce fichier existe et contient les styles globaux
 
-import React, { useState } from 'react';
-
-const TranslatePage = () => {
-  const [textToTranslate, setTextToTranslate] = useState("");
-  const [fromLanguage, setFromLanguage] = useState("en"); // Langue par défaut en anglais
-  const [toLanguage, setToLanguage] = useState("fr"); // Langue par défaut en français
-  const [translationResult, setTranslationResult] = useState("");
-  const [error, setError] = useState(null);
-
-  const handleTranslate = async () => {
-    const formData = new FormData();
-    formData.append("text", textToTranslate);
-    formData.append("from_language", fromLanguage);
-    formData.append("to_language", toLanguage);
-
-    try {
-      const response = await fetch("http://127.0.0.1:5000/api/v1/translate", {
-        method: "POST",
-        body: formData,
-      });
-
-      console.log(formData);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log(data);
-      setTranslationResult(data[0].translation);
-      setError(null); // Reset error state on success
-    } catch (error) {
-      setError(error.message);
-      console.error("Error translating text:", error);
-    }
-  };
-
+const App = () => {
   return (
-    <div className="translate-page">
-      <h1>Page de Traduction</h1>
-      <div className="translate-form">
-        <label htmlFor="textToTranslate">Texte à traduire:</label>
-        <textarea
-          id="textToTranslate"
-          rows="4"
-          value={textToTranslate}
-          onChange={(e) => setTextToTranslate(e.target.value)}></textarea>
-
-        <label htmlFor="fromLanguage">De la langue:</label>
-        <select
-          id="fromLanguage"
-          value={fromLanguage}
-          onChange={(e) => {
-            setFromLanguage(e.target.value);
-          }}>
-          <option value="en">Anglais</option>
-          <option value="fr">Français</option>
-          {/* Ajoutez d'autres options de langue selon vos besoins */}
-        </select>
-
-        <label htmlFor="toLanguage">Vers la langue:</label>
-        <select
-          id="toLanguage"
-          value={toLanguage}
-          onChange={(e) => setToLanguage(e.target.value)}>
-          <option value="fr">Français</option>
-          <option value="en">Anglais</option>
-          {/* Ajoutez d'autres options de langue selon vos besoins */}
-        </select>
-
-        <button onClick={handleTranslate}>Traduire</button>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="home-page">
+                <main className="home-main">
+                  <div className="instruction-text">
+                    <h2>Que voulez-vous faire ?</h2>
+                  </div>
+                  <nav className="nav-container">
+                    <ul className="nav-list">
+                      <li className="nav-item">
+                        <Link to="/transcription">
+                          <div className="nav-block">
+                            <img src={require('./image/transcrire.png')} alt="Transcription" className="nav-image" />
+                          </div>
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link to="/translation">
+                          <div className="nav-block">
+                            <img src={require('./image/traduire.png')} alt="Traduction" className="nav-image" />
+                          </div>
+                        </Link>
+                      </li>
+                    </ul>
+                  </nav>
+                </main>
+              </div>
+            }
+          />
+          <Route path="/translation" element={<Translation />} />
+          <Route path="/transcription" element={<Transcription />} />
+        </Routes>
       </div>
-
-      {translationResult && (
-        <div className="translation-result">
-          <h2>Résultat de la traduction:</h2>
-          <p>{translationResult}</p>
-        </div>
-      )}
-
-      {error && (
-        <div className="error-message">
-          <p>Erreur:</p>
-          <p>{error}</p>
-        </div>
-      )}
-    </div>
+    </Router>
   );
 };
 
-export default TranslatePage;
+export default App;
