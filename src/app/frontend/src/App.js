@@ -14,6 +14,11 @@ const TranslatePage = () => {
   };
 
   const handleUpload = async () => {
+    if (!audioFile) {
+      setError('Please select an audio file first');
+      return;
+    }
+
     const formData = new FormData();
     formData.append("audioFile", audioFile);
     formData.append("language", "english");
@@ -36,76 +41,63 @@ const TranslatePage = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const reader = response.body.getReader();
-      let output = "";
-
-      while (true) {
-        const { done, value } = await reader.read();
-
-        if (done) {
-          break;
-        }
-
-        output += new TextDecoder("utf-8").decode(value);
-        setTranscription((prevTranscription) => prevTranscription + output);
-      }
-      setError(null); // Réinitialisez l'état d'erreur en cas de succès
+      const data = await response.json();
+      setTranscription(data[0].transcription);
+      setError(null); // Reset error state on success
     } catch (error) {
       setError(error.message);
       console.error("Error translating text:", error);
     }
   };
 
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    setAudioFile(file);
+  };
+
   return (
-    <div className="translate-page">
-      <h1>Page de Traduction</h1>
-      <div className="translate-form">
-        <label htmlFor="textToTranslate">Texte à traduire:</label>
-        <textarea
-          id="textToTranslate"
-          rows="4"
-          value={textToTranslate}
-          onChange={(e) => setTextToTranslate(e.target.value)}
-        ></textarea>
-
-        <label htmlFor="fromLanguage">De la langue:</label>
-        <select
-          id="fromLanguage"
-          value={fromLanguage}
-          onChange={(e) => setFromLanguage(e.target.value)}
+    <div className="App">
+      <header className="App-header">
+        <p>transcrire l'audio en texte</p>
+        <div
+          className="file-input-wrapper"
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
         >
-          <option value="en">Anglais</option>
-          <option value="fr">Français</option>
-          {/* Ajoutez d'autres options de langue selon vos besoins */}
-        </select>
-
-        <label htmlFor="toLanguage">Vers la langue:</label>
-        <select
-          id="toLanguage"
-          value={toLanguage}
-          onChange={(e) => setToLanguage(e.target.value)}
-        >
-          <option value="fr">Français</option>
-          <option value="en">Anglais</option>
-          {/* Ajoutez d'autres options de langue selon vos besoins */}
-        </select>
-
-        <button onClick={handleTranslate}>Traduire</button>
-      </div>
-
-      {translationResult && (
-        <div className="translation-result">
-          <h2>Résultat de la traduction:</h2>
-          <p>{translationResult}</p>
+          <input
+            type="file"
+            id="file"
+            className="file-input"
+            onChange={handleFileChange}
+          />
+          <label htmlFor="file" className="custom-file-upload">
+            Choose File or Drag and Drop Here
+          </label>
+          {audioFile ? (
+            <p className="file-name">{audioFile.name}</p>
+          ) : (
+            <p className="file-name">No file selected</p>
+          )}
         </div>
-      )}
-
-      {error && (
-        <div className="error-message">
-          <p>Erreur:</p>
-          <p>{error}</p>
-        </div>
-      )}
+        <button onClick={handleUpload}>Upload</button>
+        {error && (
+          <div className="error-message">
+            <p>Error:</p>
+            <p>{error}</p>
+          </div>
+        )}
+        {transcription && (
+          <div className="transcription-result">
+            <p>Transcription:</p>
+            <p>{transcription}</p>
+          </div>
+        )}
+      </header>
     </div>
   );
 };
