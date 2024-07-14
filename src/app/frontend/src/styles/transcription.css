@@ -1,0 +1,114 @@
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Aligne les éléments sur le côté supérieur */
+  justify-content: flex-start; /* Place le contenu au début de l'espace disponible */
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.file-input-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.file-input {
+  display: none;
+}
+
+.custom-file-upload {
+  /*border: 2px solid #1976d2;*/
+  display: inline-block;
+  padding: 100px 60px;
+  cursor: pointer;
+  background-color: rgba(25, 118, 210, 0.1); /* Couleur presque transparente */
+  color: white;
+  font-size: 25px;
+  border-radius: 12px;
+  transition: background-color 0.3s, transform 0.3s;
+  position: relative; /* Ajout pour gérer le pseudo-élément */
+  overflow: hidden; /* Masquer les parties de la bordure coupée */
+}
+
+.custom-file-upload::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #1976d2;
+  box-sizing: border-box;
+  border-radius: inherit; /* Utilise le même radius que .custom-file-upload */
+}
+
+.custom-file-upload:hover {
+  background-color: rgba(25, 118, 210, 0.2); /* Couleur légèrement plus visible au survol */
+  transform: scale(1.05);
+}
+.file-name-container {
+  text-align: center;
+  font-size: 12px; /* Taille de police plus petite */
+}
+
+.file-name {
+  margin: 0; /* Supprime les marges par défaut des paragraphes */
+}
+button {
+  margin-top: 20px;
+  padding: 15px 45px;
+  font-size: 16px;
+  color: white;
+  background-color: #1976d2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #21a1f1;
+}
+
+.error-message {
+  margin-top: 20px;
+  color: #ff4c4c;
+}
+
+.transcription-result {
+  margin-top: 20px;
+  background-color: #282c34;
+  padding: 20px;
+  border-radius: 10px;
+  color: #f1f1f1;
+  display: inline-block;
+  border: 2px dashed #1976d2;
+  font-size: 15px;
+}
+
+.transcription-result p {
+  margin: 5px 0;
+}
+
+.error-message p {
+  margin: 5px 0;
+}
