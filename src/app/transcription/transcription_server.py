@@ -64,7 +64,7 @@ def serve():
         server.wait_for_termination()
     except KeyboardInterrupt:
         logger.info("Server stopped")
-        clean_up_when_close()
+        # clean_up_when_close()
         server.stop(0)
 
 

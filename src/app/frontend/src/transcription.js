@@ -11,13 +11,10 @@ function App() {
   };
 
   const handleUpload = async () => {
-    if (!audioFile) {
-      setError("Please select an audio file first");
-      return;
-    }
-
     const formData = new FormData();
     formData.append("audioFile", audioFile);
+    formData.append("language", "english");
+    formData.append("isLongAudio", "True");
 
     try {
       const response = await fetch("http://127.0.0.1:5000/api/v1/transcribe", {
@@ -29,9 +26,24 @@ function App() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const data = await response.json();
-      setTranscription(data[0].transcription);
-      setError(null); // Reset error state on success
+      const reader = response.body.getReader();
+      let output = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+
+        if (done) {
+          break;
+        }
+
+        const transcriptionText = new TextDecoder("utf-8")
+          .decode(value)
+          .replace("transcription:", "");
+        output += transcriptionText;
+
+        setTranscription((prevTranscription) => prevTranscription + output);
+      }
+      setError(null); // Réinitialisez l'état d'erreur en cas de succès
     } catch (error) {
       setError(error.message);
       console.error("Error uploading file:", error);
@@ -51,7 +63,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>transcrire l'audio en texte</p>
+        <p>Transcrire l'audio en texte</p>
         <div
           className="file-input-wrapper"
           onDragOver={handleDragOver}

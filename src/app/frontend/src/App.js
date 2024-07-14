@@ -1,8 +1,8 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import Translation from "./translate";
-import Transcription from "./transcription";
-import "./styles/App.css"; // Assurez-vous que ce fichier existe et contient les styles globaux
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Translation from './translate';
+import Transcription from './transcription';
+import './styles/App.css'; // Assurez-vous que ce fichier existe et contient les styles globaux
 
 const App = () => {
   return (
@@ -22,22 +22,14 @@ const App = () => {
                       <li className="nav-item">
                         <Link to="/transcription">
                           <div className="nav-block">
-                            <img
-                              src={require("./image/transcrire.png")}
-                              alt="Transcription"
-                              className="nav-image"
-                            />
+                            <img src={require('./image/transcrire.png')} alt="Transcription" className="nav-image" />
                           </div>
                         </Link>
                       </li>
                       <li className="nav-item">
                         <Link to="/translation">
                           <div className="nav-block">
-                            <img
-                              src={require("./image/traduire.png")}
-                              alt="Traduction"
-                              className="nav-image"
-                            />
+                            <img src={require('./image/traduire.png')} alt="Traduction" className="nav-image" />
                           </div>
                         </Link>
                       </li>
