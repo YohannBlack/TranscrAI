@@ -1,0 +1,121 @@
+/* Translate Page Styles */
+body {
+  background-color: #282c34; /* Couleur de fond pour tout le corps de la page */
+  color: #fff; /* Couleur du texte principal */
+  font-family: Arial, sans-serif; /* Police de caractères par défaut */
+  margin: 0; /* Supprime les marges par défaut du corps */
+  padding: 0; /* Supprime les rembourrages par défaut du corps */
+}
+
+.translate-page {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9; /* Couleur de fond pour le conteneur de la page */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.translate-page h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #282c34;
+}
+
+.translate-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group textarea,
+.form-group select {
+  width: calc(100% - 22px); /* Ajuste la largeur pour le rembourrage */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.translate-button {
+  background-color: #145a8d;
+  color: white;
+  border: none;
+  padding: 12px 40px; /* Ajuste la largeur du bouton */
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  display: block; /* Pour centrer le bouton */
+  margin: 0 auto; /* Pour centrer le bouton */
+}
+
+.translate-button:hover {
+  background-color: #282c34;
+}
+
+.translation-result {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #333; /* Couleur du texte */
+  text-align: left; /* Alignement du texte à gauche */
+  position: relative; /* Position relative pour contenir le bouton de copie */
+}
+
+.translation-result h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.translation-result p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  color: #1976d2;
+  border: none;
+  padding: 8px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.copy-button {
+  background-color: transparent;
+  color: #333; /* Couleur du texte gris foncé */
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.copy-button:hover {
+  background-color: #bbbaba; /* Arrière-plan gris foncé au survol */
+  color: #333; /* Couleur du texte reste gris foncé au survol */
+}
+

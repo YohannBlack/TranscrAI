@@ -13,10 +13,14 @@ logger = logging.getLogger(__name__)
 class TranslationServer(translation_pb2_grpc.TranslateServicer):
     def Translate(self, request, context):
         logger.info("Translation request received")
+        logger.info("Request info : ")
         text = request.input
         from_language = request.from_language
         to_language = request.to_language
+        logger.info(
+            f"Text: {text} From language: {from_language} To language: {to_language}")
         translation = translate_text(text, from_language, to_language)
+        logger.info(f"Translation: {translation}")
         return translation_pb2.TranslationResponse(text=translation)
 
 
@@ -32,7 +36,7 @@ def serve():
         server.wait_for_termination()
     except KeyboardInterrupt:
         logger.info("Server stopped")
-        clean_up_when_close()
+        # clean_up_when_close()
         server.stop(0)
 
 
